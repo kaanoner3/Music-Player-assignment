@@ -1,7 +1,16 @@
 {
   "name": "skoove-assignment",
   "version": "1.0.0",
+  "private": true,
   "main": "node_modules/expo/AppEntry.js",
+  "workspaces": [
+    "packages/*/*"
+  ],
+  "packageManager": "yarn@3.2.1",
+  "engines": {
+    "npm": "please-use-yarn",
+    "yarn": ">=3.2.0"
+  },
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
@@ -41,6 +50,5 @@
   },
   "jest": {
     "preset": "jest-expo"
-  },
-  "private": true
+  }
 }
