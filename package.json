@@ -34,10 +34,12 @@
   "devDependencies": {
     "@babel/core": "^7.12.9",
     "@testing-library/jest-native": "^4.0.11",
+    "@testing-library/react-hooks": "^8.0.1",
     "@testing-library/react-native": "^11.0.0",
     "@types/jest": "^29.0.0",
     "@types/react": "^18.0.18",
     "@types/react-native": "^0.69.6",
+    "@types/react-test-renderer": "^18.0.0",
     "@typescript-eslint/eslint-plugin": "^5.36.1",
     "@typescript-eslint/parser": "^5.36.1",
     "eslint": "^8.23.0",

@@ -1447,7 +1447,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.0.0, @babel/runtime@npm:^7.14.0, @babel/runtime@npm:^7.8.4":
+"@babel/runtime@npm:^7.0.0, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.14.0, @babel/runtime@npm:^7.8.4":
   version: 7.18.9
   resolution: "@babel/runtime@npm:7.18.9"
   dependencies:
@@ -2771,6 +2771,12 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@skoove/design-system.text@workspace:packages/design-system/text":
+  version: 0.0.0-use.local
+  resolution: "@skoove/design-system.text@workspace:packages/design-system/text"
+  languageName: unknown
+  linkType: soft
+
 "@testing-library/jest-native@npm:^4.0.11":
   version: 4.0.11
   resolution: "@testing-library/jest-native@npm:4.0.11"
@@ -2781,6 +2787,28 @@ __metadata:
     pretty-format: ^28.1.3
     redent: ^2.0.0
   checksum: a25f37233c050949f18b3ba9ee3d8662f8dc4e2c78267ffed2dd9143cd4eae0a5d9258d45dda71c81ff07c87f282aa0dff8bc385d79fcb04de0d176bc2507f90
+  languageName: node
+  linkType: hard
+
+"@testing-library/react-hooks@npm:^8.0.1":
+  version: 8.0.1
+  resolution: "@testing-library/react-hooks@npm:8.0.1"
+  dependencies:
+    "@babel/runtime": ^7.12.5
+    react-error-boundary: ^3.1.0
+  peerDependencies:
+    "@types/react": ^16.9.0 || ^17.0.0
+    react: ^16.9.0 || ^17.0.0
+    react-dom: ^16.9.0 || ^17.0.0
+    react-test-renderer: ^16.9.0 || ^17.0.0
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
+    react-dom:
+      optional: true
+    react-test-renderer:
+      optional: true
+  checksum: 7fe44352e920deb5cb1876f80d64e48615232072c9d5382f1e0284b3aab46bb1c659a040b774c45cdf084a5257b8fe463f7e08695ad8480d8a15635d4d3d1f6d
   languageName: node
   linkType: hard
 
@@ -2983,6 +3011,15 @@ __metadata:
   dependencies:
     "@types/react": "*"
   checksum: 0a5ab99b3d54a8690622d49f3b6c907f4bce7a9f99df4644ee4bce7c026c8f02fe0d6a9b4d14acbf0f38cd3670cd9f107d4cfcae73e852cc8c8d13a569f772a6
+  languageName: node
+  linkType: hard
+
+"@types/react-test-renderer@npm:^18.0.0":
+  version: 18.0.0
+  resolution: "@types/react-test-renderer@npm:18.0.0"
+  dependencies:
+    "@types/react": "*"
+  checksum: 6afc938a1d7618d88ab8793e251f0bd5981bf3f08c1b600f74df3f8800b92589ea534dc6dcb7c8d683893fcc740bf8d7843a42bf2dae59785cfe88f004bd7b0b
   languageName: node
   linkType: hard
 
@@ -10520,6 +10557,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-error-boundary@npm:^3.1.0":
+  version: 3.1.4
+  resolution: "react-error-boundary@npm:3.1.4"
+  dependencies:
+    "@babel/runtime": ^7.12.5
+  peerDependencies:
+    react: ">=16.13.1"
+  checksum: f36270a5d775a25c8920f854c0d91649ceea417b15b5bc51e270a959b0476647bb79abb4da3be7dd9a4597b029214e8fe43ea914a7f16fa7543c91f784977f1b
+  languageName: node
+  linkType: hard
+
 "react-freeze@npm:^1.0.0":
   version: 1.0.3
   resolution: "react-freeze@npm:1.0.3"
@@ -11486,10 +11534,12 @@ __metadata:
     "@react-navigation/native": ^6.0.12
     "@react-navigation/native-stack": ^6.8.0
     "@testing-library/jest-native": ^4.0.11
+    "@testing-library/react-hooks": ^8.0.1
     "@testing-library/react-native": ^11.0.0
     "@types/jest": ^29.0.0
     "@types/react": ^18.0.18
     "@types/react-native": ^0.69.6
+    "@types/react-test-renderer": ^18.0.0
     "@typescript-eslint/eslint-plugin": ^5.36.1
     "@typescript-eslint/parser": ^5.36.1
     eslint: ^8.23.0

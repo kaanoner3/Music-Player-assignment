@@ -1,7 +1,8 @@
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import { Text } from '@skoove/design-system.text'
 import { StatusBar } from 'expo-status-bar'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 
 const HomeScreen = () => (
   <View style={styles.container}>
