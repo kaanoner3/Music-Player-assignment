@@ -17,7 +17,7 @@ describe('Text', () => {
     expect(getByTestId('Text')).toBeTruthy()
     expect(getByText(TEXT)).toBeTruthy()
   })
-  it('Should render with requested styles', async () => {
+  it('Should render with requested styles & props', async () => {
     const component = (
       <Text
         numberOfLines={2}

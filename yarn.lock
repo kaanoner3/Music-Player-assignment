@@ -2790,6 +2790,12 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@skoove/design-system.image@workspace:packages/design-system/image":
+  version: 0.0.0-use.local
+  resolution: "@skoove/design-system.image@workspace:packages/design-system/image"
+  languageName: unknown
+  linkType: soft
+
 "@skoove/design-system.text@workspace:packages/design-system/text":
   version: 0.0.0-use.local
   resolution: "@skoove/design-system.text@workspace:packages/design-system/text"
@@ -10811,6 +10817,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-native-fast-image@npm:^8.6.0":
+  version: 8.6.0
+  resolution: "react-native-fast-image@npm:8.6.0"
+  peerDependencies:
+    react: ^17 || ^18
+    react-native: ">=0.60.0"
+  checksum: 6cbfefc4ad7f3ea667d82a9f0e38a6809c823470814e97ba308bac1b12d9cc4d1c38be92f7f0b24dee89f5f6d1a925e70e85132880364d52a46665fdc185b769
+  languageName: node
+  linkType: hard
+
 "react-native-gradle-plugin@npm:^0.0.7":
   version: 0.0.7
   resolution: "react-native-gradle-plugin@npm:0.0.7"
@@ -11783,6 +11799,7 @@ __metadata:
     react: 18.0.0
     react-dom: 18.0.0
     react-native: 0.69.5
+    react-native-fast-image: ^8.6.0
     react-native-safe-area-context: 4.3.1
     react-native-screens: ~3.15.0
     react-native-web: ~0.18.7
