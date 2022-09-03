@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { StyleSheet, Text as RNText } from 'react-native'
+import { StyleProp, StyleSheet, Text as RNText, TextStyle } from 'react-native'
 
 import { MarginProps, Decoration, Alignment } from './types'
 import { pickDefinedValues } from './utils/pickDefinedValues'
@@ -11,6 +11,7 @@ export interface TextProps extends MarginProps {
   numberOfLines?: number
   testID?: string
   textAlign?: Alignment
+  style?: StyleProp<TextStyle>
 }
 
 export const Text: React.FC<TextProps> = ({
@@ -28,6 +29,7 @@ export const Text: React.FC<TextProps> = ({
   marginStart,
   marginTop,
   marginVertical,
+  style = {},
   color = '#000',
 }) => {
   const supportedMarginStyles = {
@@ -53,6 +55,7 @@ export const Text: React.FC<TextProps> = ({
         textAlign !== undefined && { textAlign },
         { color },
         decoration && styles[decoration],
+        style,
       ]}>
       {children}
     </RNText>
