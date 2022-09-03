@@ -2790,6 +2790,12 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@skoove/design-system.button@workspace:packages/design-system/button":
+  version: 0.0.0-use.local
+  resolution: "@skoove/design-system.button@workspace:packages/design-system/button"
+  languageName: unknown
+  linkType: soft
+
 "@skoove/design-system.image@workspace:packages/design-system/image":
   version: 0.0.0-use.local
   resolution: "@skoove/design-system.image@workspace:packages/design-system/image"
