@@ -1,3 +1,4 @@
+import { Dimensions } from 'react-native'
 export const spacing = {
   s0: 0,
   s2: 2,
@@ -14,6 +15,7 @@ export const spacing = {
   s64: 64,
   s72: 72,
 } as const
+export const SCREEN_WIDTH = Dimensions.get('window').width
 
 export type SpacingName = keyof typeof spacing
 export type Spacing = typeof spacing[SpacingName]
