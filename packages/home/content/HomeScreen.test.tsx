@@ -1,7 +1,7 @@
 import { Provider } from 'react-redux'
 import { store, resetStore } from '@skoove/platform.redux'
 import { NavigationContainer } from '@react-navigation/native'
-import { mockedNavigate, mockedSkip, testQueryClient } from '../../../jest-setup'
+import { mockNavigate, mockSkip, testQueryClient } from '../../../jest-setup'
 import { QueryClientProvider } from 'react-query'
 import { setupServer } from 'msw/node'
 import { rest } from 'msw'
@@ -38,7 +38,7 @@ describe('HomeScreen', () => {
   })
   beforeEach(async () => {
     await act(async () => {
-      store.dispatch(resetStore())
+      await store.dispatch(resetStore())
     })
   })
   it('should render HomeScreen', () => {
@@ -78,7 +78,7 @@ describe('HomeScreen', () => {
       const firstItem = getByText('Nightlife')
       expect(firstItem).toBeTruthy()
       fireEvent.press(firstItem)
-      expect(mockedNavigate).toHaveBeenCalledWith('MusicContent')
+      expect(mockNavigate).toHaveBeenCalledWith('MusicContent')
     })
   })
   it('On Flatlist item press Trackplayer.skip should called with index', async () => {
@@ -96,7 +96,7 @@ describe('HomeScreen', () => {
       const firstItem = getByText('Nightlife')
       expect(firstItem).toBeTruthy()
       fireEvent.press(firstItem)
-      expect(mockedSkip).toHaveBeenCalledWith(1)
+      expect(mockSkip).toHaveBeenCalledWith(1)
     })
   })
   it('On Flatlist item press currentSongIndex should set to index', async () => {

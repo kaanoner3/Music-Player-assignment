@@ -9,6 +9,7 @@ const addSongs = async (songs: AudioItem[]) => {
     duration: item.totalDurationMs / 1000,
     artwork: item.cover,
   }))
+
   await TrackPlayer.add(formattedSongs)
 }
 export const QueueInitalTracksService = async (songs: AudioItem[]): Promise<void> => {

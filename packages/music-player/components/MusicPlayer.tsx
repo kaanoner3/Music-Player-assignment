@@ -51,6 +51,7 @@ export const MusicPlayer: React.FC = () => {
   const onScrollEndDrag = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
     const scrollX = event.nativeEvent.contentOffset.x
     const index = Math.round(scrollX / SCREEN_WIDTH)
+
     if (scrollX > 0 && index !== currentSongIndex) {
       TrackPlayer.skip(index)
     }

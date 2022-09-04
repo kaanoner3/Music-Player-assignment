@@ -1,6 +1,6 @@
 import { setCurrentSong, setStore, store } from '@skoove/platform.redux'
 import { fireEvent, render } from '@testing-library/react-native'
-import { mockedSkip, mockSeekTo } from '../../../../jest-setup'
+import { mockSkip, mockSeekTo } from '../../../../jest-setup'
 import { MusicPlayer } from '../MusicPlayer'
 import { Provider } from 'react-redux'
 import { MOCK_RESPONSE } from '../../../home/mocks/MOCK_RESPONSE'
@@ -9,6 +9,7 @@ import { act } from 'react-test-renderer'
 describe('MusicPlayer', () => {
   beforeEach(() => {
     store.dispatch(setStore(MOCK_RESPONSE.data))
+    store.dispatch(setCurrentSong(1))
   })
   it('should call TrakPlayer.seekTo when sliding is completed', async () => {
     const { getByTestId } = render(
@@ -44,11 +45,11 @@ describe('MusicPlayer', () => {
       nativeEvent: {
         contentSize: { height: 300, width: 300 },
         contentOffset: { y: 0, x: 350 },
-        layoutMeasurement: { height: 300, width: 300 }, // Dimensions of the device
+        layoutMeasurement: { height: 300, width: 300 },
       },
     })
     await act(async () => {
-      expect(mockedSkip).toHaveBeenCalledWith(0)
+      expect(mockSkip).toHaveBeenCalled()
     })
   })
 })

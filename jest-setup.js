@@ -2,6 +2,8 @@ import { QueryClient } from 'react-query'
 import '@testing-library/jest-native/extend-expect'
 import 'whatwg-fetch'
 import { View } from 'react-native'
+import { act } from '@testing-library/react-native'
+import { store, resetStore } from '@skoove/platform.redux'
 
 export const testQueryClient = new QueryClient({
   defaultOptions: {
@@ -20,49 +22,57 @@ jest.mock('@expo/vector-icons/Ionicons', () => ({
   __esModule: true,
   default: MockIonIcon,
 }))
-
-export const mockedNavigate = jest.fn()
+beforeAll(async () => {
+  await act(async () => {
+    store.dispatch(resetStore())
+  })
+})
+export const mockNavigate = jest.fn()
 
 jest.mock('@react-navigation/native', () => {
   const actualNav = jest.requireActual('@react-navigation/native')
   return {
     ...actualNav,
     useNavigation: () => ({
-      navigate: mockedNavigate,
+      navigate: mockNavigate,
     }),
   }
 })
-export const mockedSkip = jest.fn()
-export const mockedSetupPlayer = jest.fn()
-export const mockedAdd = jest.fn()
-export const mockGetCurrentTrack = jest.fn().mockRejectedValueOnce(new Error('error'))
+export const mockSkip = jest.fn()
+export const mockSetupPlayer = jest.fn()
+export const mockAdd = jest.fn()
+export const mockGetCurrentTrack = jest.fn()
 export const mockSkipToPrevious = jest.fn()
 export const mockSkipToNext = jest.fn()
 export const mockSeekTo = jest.fn()
+export const mockPause = jest.fn()
+export const mockGetQueue = jest.fn(() => [])
+export const mockPlay = jest.fn()
+export const mockUsePlaybackState = jest.fn(() => 'playing')
 jest.mock('react-native-track-player', () => {
   return {
     addEventListener: jest.fn(),
     registerEventHandler: jest.fn(),
     registerPlaybackService: jest.fn(),
-    setupPlayer: mockedSetupPlayer,
+    setupPlayer: mockSetupPlayer,
     destroy: jest.fn(),
     updateOptions: jest.fn(),
-    add: mockedAdd,
+    add: mockAdd,
     remove: jest.fn(),
-    skip: mockedSkip,
+    skip: mockSkip,
     skipToNext: mockSkipToNext,
     skipToPrevious: mockSkipToPrevious,
     removeUpcomingTracks: jest.fn(),
     // playback commands
     reset: jest.fn(),
-    play: jest.fn(),
-    pause: jest.fn(),
+    play: mockPlay,
+    pause: mockPause,
     stop: jest.fn(),
     seekTo: mockSeekTo,
     setVolume: jest.fn(),
     setRate: jest.fn(),
     // player getters
-    getQueue: jest.fn(),
+    getQueue: mockGetQueue,
     getTrack: jest.fn(),
     getCurrentTrack: mockGetCurrentTrack,
     getVolume: jest.fn(),
@@ -80,7 +90,7 @@ jest.mock('react-native-track-player', () => {
       return 2
     },
     Event: { PlaybackTrackChanged: true },
-    usePlaybackState: () => 'playing',
+    usePlaybackState: mockUsePlaybackState,
     State: { Playing: 'playing', Pause: 'paused' },
   }
 })
