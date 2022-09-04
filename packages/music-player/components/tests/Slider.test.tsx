@@ -10,11 +10,4 @@ describe('Slider', () => {
     fireEvent(slider, 'onSlidingComplete', { scrollTo: 50 })
     expect(mockOnSlidingComplete).toHaveBeenCalledTimes(1)
   })
-  it('onSlidingComplete should have been called with provided value', async () => {
-    const mockOnSlidingComplete = jest.fn()
-    const { getByTestId } = render(<Slider onSlidingComplete={mockOnSlidingComplete} />)
-    const slider = getByTestId('slider')
-    fireEvent(slider, 'onSlidingComplete', { scrollTo: 50 })
-    expect(mockSeekTo).toHaveBeenCalledWith(50)
-  })
 })
