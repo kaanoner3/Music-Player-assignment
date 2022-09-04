@@ -1,1 +1,1 @@
-export { MusicContentScreen } from './ContentScreen'
+export { MusicPlayerScreen } from './MusicPlayerScreen'

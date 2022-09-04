@@ -1,22 +1,21 @@
 import { default as RNSlider } from '@react-native-community/slider'
 import { SCREEN_WIDTH } from '@skoove/design-system.theme/spacing'
-import { ReducerStateType } from '@skoove/platform.redux'
 import * as React from 'react'
-import { useSelector } from 'react-redux'
+import { useProgress } from 'react-native-track-player'
 
 interface SliderCompProps {
-  onSliderValueChange: (value: number) => void
+  onSlidingComplete: (value: number) => void
 }
 
-export const Slider: React.FC<SliderCompProps> = ({ onSliderValueChange }) => {
-  const progression = useSelector<ReducerStateType, number>(state => state.progression)
+export const Slider: React.FC<SliderCompProps> = ({ onSlidingComplete }) => {
+  const { position, duration } = useProgress(1)
   return (
     <RNSlider
       style={{ width: SCREEN_WIDTH - 40, height: 40 }}
       minimumValue={0}
-      maximumValue={100}
-      value={progression}
-      onValueChange={onSliderValueChange}
+      maximumValue={duration}
+      value={position}
+      onSlidingComplete={onSlidingComplete}
       maximumTrackTintColor="#a0ada3"
       minimumTrackTintColor="#000000"
     />

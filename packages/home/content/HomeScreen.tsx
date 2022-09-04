@@ -6,6 +6,7 @@ import { spacing } from '@skoove/design-system.theme'
 import { setStore, setCurrentSong } from '@skoove/platform.redux'
 import * as React from 'react'
 import { StyleSheet, FlatList, View, ListRenderItem } from 'react-native'
+import TrackPlayer from 'react-native-track-player'
 import { useDispatch } from 'react-redux'
 
 import { useHomePageQuery } from '../hooks/useHomePageQuery'
@@ -21,11 +22,16 @@ export const HomeScreen: React.FC = () => {
 
   const navigateToMusicPlayer = (index: number) => {
     dispatch(setCurrentSong(index))
+    TrackPlayer.skip(index)
     navigation.navigate('MusicContent')
   }
   const renderItem: ListRenderItem<AudioItem> = ({ item, index }) => {
     return (
-      <Button onPress={() => navigateToMusicPlayer(index)} style={styles.itemContainer}>
+      <Button
+        onPress={() => {
+          navigateToMusicPlayer(index)
+        }}
+        style={styles.itemContainer}>
         <Image resizeMode="cover" style={styles.image} uri={item.cover}>
           <Text textAlign="center" style={styles.text}>
             {item.title}
