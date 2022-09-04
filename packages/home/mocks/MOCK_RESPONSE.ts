@@ -1,0 +1,28 @@
+export const MOCK_RESPONSE = {
+  data: [
+    {
+      title: 'Oceansound',
+      audio:
+        'https://raw.githubusercontent.com/Learnfield-GmbH/CodingChallange/master/react%20native/simple%20audio%20player/data/Oceansound.mp3',
+      cover:
+        'https://raw.githubusercontent.com/Learnfield-GmbH/CodingChallange/master/react%20native/simple%20audio%20player/data/Oceansound.png',
+      totalDurationMs: 14448,
+    },
+    {
+      title: 'Nightlife',
+      audio:
+        'https://raw.githubusercontent.com/Learnfield-GmbH/CodingChallange/master/react%20native/simple%20audio%20player/data/Nightlife.mp3',
+      cover:
+        'https://raw.githubusercontent.com/Learnfield-GmbH/CodingChallange/master/react%20native/simple%20audio%20player/data/Nightlife.png',
+      totalDurationMs: 15696,
+    },
+    {
+      title: 'Waking Me',
+      audio:
+        'https://raw.githubusercontent.com/Learnfield-GmbH/CodingChallange/master/react%20native/simple%20audio%20player/data/Waking_Me.mp3',
+      cover:
+        'https://raw.githubusercontent.com/Learnfield-GmbH/CodingChallange/master/react%20native/simple%20audio%20player/data/Waking_Me.png',
+      totalDurationMs: 13776,
+    },
+  ],
+}
