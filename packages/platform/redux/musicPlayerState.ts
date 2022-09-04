@@ -25,10 +25,15 @@ const musicPlayerStateSlice = createSlice({
       state.activeSong = currentSong
       state.currentSongIndex = action.payload
     },
+    resetStore: state => {
+      state.songs = initialState.songs
+      state.currentSongIndex = initialState.currentSongIndex
+      state.activeSong = initialState.activeSong
+    },
   },
 })
 
-export const { setStore, setCurrentSong } = musicPlayerStateSlice.actions
+export const { setStore, setCurrentSong, resetStore } = musicPlayerStateSlice.actions
 
 export const store = configureStore({
   reducer: musicPlayerStateSlice.reducer,

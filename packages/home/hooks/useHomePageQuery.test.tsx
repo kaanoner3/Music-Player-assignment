@@ -4,26 +4,17 @@ import { renderHook } from '@testing-library/react-hooks'
 import { rest } from 'msw'
 import { setupServer } from 'msw/node'
 import React from 'react'
-import { QueryClient, QueryClientProvider } from 'react-query'
+import { QueryClientProvider } from 'react-query'
 import { Provider } from 'react-redux'
+import { testQueryClient } from '../../../jest-setup'
 import { MOCK_RESPONSE } from '../mocks/MOCK_RESPONSE'
 
 import { useHomePageQuery } from './useHomePageQuery'
 
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      useErrorBoundary: true,
-      retry: false,
-      cacheTime: Infinity,
-    },
-  },
-})
-
-const wrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+const TestWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
     <Provider store={store}>
-      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+      <QueryClientProvider client={testQueryClient}>{children}</QueryClientProvider>
     </Provider>
   )
 }
@@ -47,7 +38,7 @@ describe('useHomePageQuery', () => {
     )
 
     const { result, waitFor } = renderHook(() => useHomePageQuery(data => data), {
-      wrapper,
+      wrapper: TestWrapper,
     })
     await waitFor(() => result.current.isSuccess)
   })
@@ -66,7 +57,7 @@ describe('useHomePageQuery', () => {
           return data
         }),
       {
-        wrapper,
+        wrapper: TestWrapper,
       },
     )
     await waitFor(() => result.current.isSuccess)

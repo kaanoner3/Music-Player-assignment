@@ -13,6 +13,14 @@ import { useDispatch } from 'react-redux'
 import { useHomePageQuery } from '../hooks/useHomePageQuery'
 import { AudioItem } from './types'
 
+const noResulComponent = () => {
+  return (
+    <View testID="no-result">
+      <Text>No Result</Text>
+    </View>
+  )
+}
+
 export const HomeScreen: React.FC = () => {
   const navigation = useNavigation<MusicContentNavigationProps>()
   const dispatch = useDispatch()
@@ -29,6 +37,7 @@ export const HomeScreen: React.FC = () => {
   const renderItem: ListRenderItem<AudioItem> = ({ item, index }) => {
     return (
       <Button
+        testID={`item-button-${index}`}
         onPress={() => {
           navigateToMusicPlayer(index)
         }}
@@ -41,13 +50,13 @@ export const HomeScreen: React.FC = () => {
       </Button>
     )
   }
-
   return (
-    <View style={styles.container}>
+    <View testID="HomeScreen" style={styles.container}>
       <FlatList
         style={styles.container}
         contentContainerStyle={styles.contentContainer}
         renderItem={renderItem}
+        ListEmptyComponent={noResulComponent}
         data={response.data ?? []}
       />
     </View>
