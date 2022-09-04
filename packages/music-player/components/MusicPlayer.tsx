@@ -91,14 +91,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     width: SCREEN_WIDTH - 128,
-    marginTop: 20,
+    marginTop: spacing.s18,
   },
   flatList: { flexGrow: 0, paddingTop: spacing.s18 },
   itemContainer: {
     height: ITEM_HEIGHT,
     width: SCREEN_WIDTH,
     alignItems: 'center',
-    paddingHorizontal: 32,
+    paddingHorizontal: spacing.s32,
   },
   itemImage: { borderRadius: 15, width: '100%', height: '100%' },
 })

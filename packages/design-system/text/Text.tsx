@@ -1,3 +1,4 @@
+import { spacing } from '@skoove/design-system.theme'
 import * as React from 'react'
 import { StyleProp, StyleSheet, Text as RNText, TextStyle } from 'react-native'
 
@@ -66,9 +67,9 @@ const styles = StyleSheet.create({
   text: {
     fontWeight: 'normal',
     color: '#000',
-    margin: 0,
-    marginVertical: 0,
-    padding: 0,
+    margin: spacing.s0,
+    marginVertical: spacing.s0,
+    padding: spacing.s0,
   },
 
   bold: {
