@@ -24,20 +24,20 @@ export const ControlButtons: React.FC = () => {
   const skipPrev = React.useCallback(() => {
     TrackPlayer.skipToPrevious()
   }, [])
-
   return (
     <View style={styles.controlButtonContainer}>
-      <Button onPress={skipPrev}>
+      <Button testID="prev-button" onPress={skipPrev}>
         <Ionicons name="play-skip-back-outline" size={50} color="#000" />
       </Button>
-      <Button onPress={togglePlayer}>
+      <Button testID="toggle-button" onPress={togglePlayer}>
         <Ionicons
+          testID="toggle-button-icon"
           name={playbackState === State.Playing ? 'pause-circle-outline' : 'play-circle-outline'}
           size={100}
           color="#000"
         />
       </Button>
-      <Button onPress={skipNext}>
+      <Button testID="next-button" onPress={skipNext}>
         <Ionicons name="play-skip-forward-outline" size={50} color="#000" />
       </Button>
     </View>

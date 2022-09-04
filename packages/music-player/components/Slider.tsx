@@ -11,6 +11,7 @@ export const Slider: React.FC<SliderCompProps> = ({ onSlidingComplete }) => {
   const { position, duration } = useProgress(1)
   return (
     <RNSlider
+      testID="slider"
       style={{ width: SCREEN_WIDTH - 40, height: 40 }}
       minimumValue={0}
       maximumValue={duration}

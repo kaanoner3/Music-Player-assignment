@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux'
 import { SetupService, QueueInitalTracksService } from './services'
 
 export const PlayerSetupHOC: React.FC<{
-  children: React.ReactNode
+  children?: React.ReactNode
 }> = ({ children }) => {
   const songs = useSelector<ReducerStateType, AudioItem[]>(state => state.songs)
   const [isPlayerReady, setIsPlayerReady] = React.useState<boolean>(false)

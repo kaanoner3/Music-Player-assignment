@@ -51,7 +51,6 @@ export const MusicPlayer: React.FC = () => {
   const onScrollEndDrag = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
     const scrollX = event.nativeEvent.contentOffset.x
     const index = Math.round(scrollX / SCREEN_WIDTH)
-    console.log(currentSongIndex, index)
     if (scrollX > 0 && index !== currentSongIndex) {
       TrackPlayer.skip(index)
     }
@@ -65,6 +64,7 @@ export const MusicPlayer: React.FC = () => {
     <View style={styles.container}>
       <SongTitle />
       <FlatList
+        testID="song-list"
         ref={flatListRef}
         onScrollEndDrag={onScrollEndDrag}
         getItemLayout={getItemLayout}
