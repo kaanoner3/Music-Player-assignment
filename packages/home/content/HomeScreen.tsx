@@ -3,6 +3,7 @@ import { Button } from '@skoove/design-system.button'
 import { Image } from '@skoove/design-system.image'
 import { Text } from '@skoove/design-system.text'
 import { spacing } from '@skoove/design-system.theme'
+import { MusicContentNavigationProps } from '@skoove/platform.navigation'
 import { setStore, setCurrentSong } from '@skoove/platform.redux'
 import * as React from 'react'
 import { StyleSheet, FlatList, View, ListRenderItem } from 'react-native'
@@ -13,7 +14,7 @@ import { useHomePageQuery } from '../hooks/useHomePageQuery'
 import { AudioItem } from './types'
 
 export const HomeScreen: React.FC = () => {
-  const navigation = useNavigation()
+  const navigation = useNavigation<MusicContentNavigationProps>()
   const dispatch = useDispatch()
   const response = useHomePageQuery(data => {
     dispatch(setStore(data))
