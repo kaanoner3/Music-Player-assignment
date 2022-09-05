@@ -21,5 +21,8 @@ export function useHomePageQuery<S>(select: (data: AudioItem[]) => S) {
   return useQuery(CONTENT_QUERY_KEY, fetchContent, {
     select,
     cacheTime: 1000 * 60 * 60,
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: false,
+    retry: false,
   })
 }

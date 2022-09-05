@@ -6,11 +6,19 @@ import { spacing } from '@skoove/design-system.theme'
 import { MusicContentNavigationProps } from '@skoove/platform.navigation'
 import { setStore, setCurrentSong } from '@skoove/platform.redux'
 import * as React from 'react'
-import { StyleSheet, FlatList, View, ListRenderItem } from 'react-native'
+import {
+  StyleSheet,
+  FlatList,
+  View,
+  ListRenderItem,
+  RefreshControl,
+  ActivityIndicator,
+} from 'react-native'
 import TrackPlayer from 'react-native-track-player'
 import { useDispatch } from 'react-redux'
 
 import { useHomePageQuery } from '../hooks/useHomePageQuery'
+import { useRefreshByUser } from '../hooks/useRefreshByUser'
 import { AudioItem } from './types'
 
 const noResulComponent = () => {
@@ -20,14 +28,21 @@ const noResulComponent = () => {
     </View>
   )
 }
-
+const LoadingComponent = () => {
+  return (
+    <View>
+      <ActivityIndicator></ActivityIndicator>
+    </View>
+  )
+}
 export const HomeScreen: React.FC = () => {
   const navigation = useNavigation<MusicContentNavigationProps>()
   const dispatch = useDispatch()
-  const response = useHomePageQuery(data => {
-    dispatch(setStore(data))
-    return data
+  const { data, refetch, isLoading } = useHomePageQuery(_data => {
+    dispatch(setStore(_data))
+    return _data
   })
+  const { isRefetchingByUser, refetchByUser } = useRefreshByUser(refetch)
 
   const navigateToMusicPlayer = (index: number) => {
     dispatch(setCurrentSong(index))
@@ -50,14 +65,19 @@ export const HomeScreen: React.FC = () => {
       </Button>
     )
   }
+  if (isLoading) return <LoadingComponent />
   return (
     <View testID="HomeScreen" style={styles.container}>
       <FlatList
+        refreshing
         style={styles.container}
         contentContainerStyle={styles.contentContainer}
         renderItem={renderItem}
+        refreshControl={
+          <RefreshControl refreshing={isRefetchingByUser} onRefresh={refetchByUser} />
+        }
         ListEmptyComponent={noResulComponent}
-        data={response.data ?? []}
+        data={data ?? []}
       />
     </View>
   )

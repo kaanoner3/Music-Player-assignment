@@ -2,14 +2,14 @@ import { AudioItem } from '@skoove/home.content'
 import { ReducerStateType } from '@skoove/platform.redux'
 import React from 'react'
 import TrackPlayer from 'react-native-track-player'
-import { useSelector } from 'react-redux'
+import { shallowEqual, useSelector } from 'react-redux'
 
 import { SetupService, QueueInitalTracksService } from './services'
 
 export const PlayerSetupHOC: React.FC<{
   children?: React.ReactNode
 }> = ({ children }) => {
-  const songs = useSelector<ReducerStateType, AudioItem[]>(state => state.songs)
+  const songs = useSelector<ReducerStateType, AudioItem[]>(state => state.songs, shallowEqual)
   const [isPlayerReady, setIsPlayerReady] = React.useState<boolean>(false)
 
   React.useEffect(() => {
