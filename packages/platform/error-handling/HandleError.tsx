@@ -11,7 +11,6 @@ interface HandleErrorProps {
 }
 
 export const HandleError = ({ errorMessage, reset }: HandleErrorProps) => {
-  console.log('burdamı')
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.text}>Something went wrong :(</Text>
