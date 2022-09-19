@@ -61,5 +61,4 @@ This part is responsible for music player. Tech: [react-native-track-player](htt
 
 - There are some unhandled rejections throwed from TrackPlayer. Displaying the alert banners would improve the user experience.
 
-## Note
-The implementation of the music player screen is a little different from the assignment's description. I preferred implementing play/pause/next/prev buttons. The main reason for it was that the images has play icon on itself. 
+
